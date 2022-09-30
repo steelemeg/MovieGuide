@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MovieGuide</string>
+    <string name="hello_blank_fragment">Error loading this movie. Please contact Support!</string>
+</resources>
