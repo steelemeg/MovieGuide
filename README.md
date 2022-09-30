@@ -4,7 +4,7 @@ Submitted by: Megan Steele
 
 MovieGuide is a movie browsing app that allows users to browse movies currently playing in theaters.
 
-Time spent: **X** hours spent in total
+Time spent: 14 hours spent in total
 
 ## Required Features
 
