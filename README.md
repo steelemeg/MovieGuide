@@ -36,7 +36,7 @@ Here's a walkthrough of implemented user stories:
 GIF created with [LiceCap](http://www.cockos.com/licecap/)
 
 Screencap of Glide placeholder code: 
-<img src='loadingImage.png' title='Placeholder implementation' width='' alt='Placeholder implementation' />
+<img src='loadingImage.PNG' title='Placeholder implementation' width='' alt='Placeholder implementation' />
 
 ## Notes
 
