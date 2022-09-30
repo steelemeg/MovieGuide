@@ -31,9 +31,12 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='movieDemo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='movies.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/)
+
+Screencap of Glide placeholder code: 
+<img src='Placeholder.png' title='Placeholder implementation' width='' alt='Placeholder implementation' />
 
 ## Notes
 
