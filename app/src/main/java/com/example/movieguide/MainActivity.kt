@@ -38,29 +38,4 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        val portraitImage =findViewById<ImageView>(R.id.movie_image)
-        val landscapeImage =findViewById<ImageView>(R.id.movie_image2)
-        // Checks the orientation of the screen
-        if (newConfig.orientation === Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show()
-            Log.v("orientation", "landscape")
-            portrait = false
-            // TODO only modifies the first movie in the RV
-            portraitImage.visibility = View.INVISIBLE
-            landscapeImage.visibility = View.VISIBLE
-            mFragment = getSupportFragmentManager().findFragmentByTag(TAG_MY_FRAGMENT) as MoviesFragment?
-
-        } else if (newConfig.orientation === Configuration.ORIENTATION_PORTRAIT) {
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show()
-            Log.v("orientation", "portrait")
-            portrait = true
-            portraitImage.visibility = View.VISIBLE
-            landscapeImage.visibility = View.INVISIBLE
-            mFragment = getSupportFragmentManager().findFragmentByTag(TAG_MY_FRAGMENT) as MoviesFragment?
-
-        }
-    }
 }

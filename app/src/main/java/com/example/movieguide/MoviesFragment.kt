@@ -70,10 +70,8 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener{
             // Using the client, perform the HTTP request
             val start = System.currentTimeMillis()
             client[
-                    // TODO debugging slow response times
-                    "https://api.themoviedb.org/3/movie/now_playing", //?api_key=$API_KEY",
-                    //"https://api.themoviedb.org/3/movie/upcoming",
-                    //"https://api.themoviedb.org/3/movie/top_rated",
+                    // Extremely slow response times
+                    "https://api.themoviedb.org/3/movie/now_playing",
                     params,
                     object : JsonHttpResponseHandler() {
                         /*
