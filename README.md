@@ -40,7 +40,7 @@ Screencap of Glide placeholder code:
 
 ## Notes
 
-- Extreme latency (80000ms and up) from the required API. This was only seen through Android Studio; tests in Postman were on the order of 300ms. Other APIs (such as the NY Times book stats API) did not show this issue. I paused my recording to work around this issue but it made testing and development much slower and more frustrating. 
+- Extreme latency (80000ms and up) from the required API. This was only seen through Android Studio; tests in Postman were on the order of 300ms. Other APIs (such as the NY Times book stats API) did not show this issue.  
 - Swapping between poster and promo images on orientation changes was challenging in the fragment structure.
 
 ## License
