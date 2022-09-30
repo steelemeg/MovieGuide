@@ -10,21 +10,22 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-- [ ] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
-- [ ] **Parse through JSON data and implement a RecyclerView to display all movies**
-- [ ] **Use Glide to load and display movie poster images**
+- [X] **Make a request to [The Movie Database API's `now_playing`](https://developers.themoviedb.org/3/movies/get-now-playing) endpoint to get a list of current movies**
+- [X] **Parse through JSON data and implement a RecyclerView to display all movies**
+- [X] **Use Glide to load and display movie poster images**
 
 The following **optional** features are implemented:
 
-- [ ] Improve and customize the user interface through styling and coloring
+- [X] Improve and customize the user interface through styling and coloring
 - [ ] Implement orientation responsivity
   - App should neatly arrange data in both landscape and portrait mode
-- [ ] Implement Glide to display placeholder graphics during loading
+- [X] Implement Glide to display placeholder graphics during loading
   - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [X] To work around extreme API response times, the app retains movie data after the initial call
+- [X] API key stored in a private file 
 
 ## Video Walkthrough
 
@@ -36,7 +37,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/)
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+- Extreme latency (80000ms and up) from the required API. This was only seen through Android Studio; tests in Postman were on the order of 300ms. Other APIs (such as the NY Times book stats API) did not show this issue. I paused my recording to work around this issue but it made testing and development much slower and more frustrating. 
 
 ## License
 

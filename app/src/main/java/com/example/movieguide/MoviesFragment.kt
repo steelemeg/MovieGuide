@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.getSystemService
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.createSavedStateHandle
@@ -22,8 +23,6 @@ import okhttp3.Headers
 import org.json.JSONArray
 
 
-
-// TODO
 private const val API_KEY = BuildConfig.API_KEY
 private var models : List<Movie>? = null
 
@@ -31,7 +30,7 @@ private var models : List<Movie>? = null
  * The class for the only fragment in the app, which contains the progress bar,
  * recyclerView, and performs the network calls to the NY Times API.
  */
-class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
+class MoviesFragment : Fragment(), OnListFragmentInteractionListener{
 
     /*
      * Constructing the view
@@ -56,7 +55,9 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
      */
     private fun updateAdapter(progressBar: ContentLoadingProgressBar, recyclerView: RecyclerView){
         progressBar.show()
-
+        val bundle = arguments
+        val orientation = bundle?.getInt("orientation")
+        Log.v("orientation", "received " + orientation.toString())
         // Create and set up an AsyncHTTPClient() here
         val client = AsyncHttpClient()
         val params = RequestParams()
@@ -98,7 +99,11 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
                             models = gson.fromJson(moviesRawJSON, arrayMovieType)
                             //var models : List<Movie> = gson.fromJson(moviesRawJSON, arrayMovieType)
                             recyclerView.adapter =
-                                models?.let { MoviesRecyclerViewAdapter(it, this@MoviesFragment) }
+                                models?.let { orientation?.let { it1 ->
+                                    MoviesRecyclerViewAdapter(it, this@MoviesFragment,
+                                        it1
+                                    )
+                                } }
 
                         }
 
@@ -126,7 +131,11 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
             Log.v("state", "existing data!! " + models?.size.toString())
             recyclerView.adapter =
                 models?.let {
-                    MoviesRecyclerViewAdapter(it, this@MoviesFragment)
+                    orientation?.let { it1 ->
+                        MoviesRecyclerViewAdapter(it, this@MoviesFragment,
+                            it1
+                        )
+                    }
                 }
             progressBar.hide()
         }
@@ -138,5 +147,6 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener {
     override fun onItemClick(item: Movie) {
         Toast.makeText(context, "Movie Selected: " + item.title, Toast.LENGTH_LONG).show()
     }
+
 
 }

@@ -1,13 +1,20 @@
 package com.example.movieguide
 
+import android.app.Activity
+import android.content.Context
+import android.hardware.SensorManager.getOrientation
+import android.media.ExifInterface
 import android.util.Log
+import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.ImageHeaderParserUtils.getOrientation
 import com.example.movieguide.R.id
 
 /**
@@ -16,7 +23,8 @@ import com.example.movieguide.R.id
  */
 class MoviesRecyclerViewAdapter(
     private val movies: List<Movie>,
-    private val mListener: OnListFragmentInteractionListener?
+    private val mListener: OnListFragmentInteractionListener?,
+    private val orientation: Int
 )
     : RecyclerView.Adapter<MoviesRecyclerViewAdapter.MovieViewHolder>()
 {
@@ -35,6 +43,7 @@ class MoviesRecyclerViewAdapter(
         val mMovieTitle: TextView = mView.findViewById<View>(id.movie_title) as TextView
         val mMovieDescription: TextView = mView.findViewById<View>(id.movie_description) as TextView
         val mMovieImage: ImageView = mView.findViewById<View>(id.movie_image) as ImageView
+        val mMovieImage2: ImageView = mView.findViewById<View>(id.movie_image2) as ImageView
 
         override fun toString(): String {
             return mMovieTitle.toString()
@@ -51,14 +60,30 @@ class MoviesRecyclerViewAdapter(
         holder.mMovieTitle.text = movie.title
         holder.mMovieDescription.text = movie.description
 
-        Log.v("bookimage", baseUrl + movie.movieImageUrl.toString())
-        Log.v("orientation", "test" )
-        Glide.with(holder.mView)
-            .load(baseUrl + movie.movieImageUrl)
-            // Uses placeholder image from https://www.svgrepo.com/svg/199954/loading-loader
-            .placeholder(R.drawable.loading)
-            .centerInside()
-            .into(holder.mMovieImage)
+
+        Log.v("image", baseUrl + movie.movieImageUrl.toString())
+        Log.v("image", baseUrl + movie.movieLandscapeUrl.toString())
+        Log.v("orientation", "in the adapter " + orientation.toString())
+        if (orientation == 1){
+            Glide.with(holder.mView)
+                .load(baseUrl + movie.movieImageUrl)
+                // Uses placeholder image from https://www.svgrepo.com/svg/199954/loading-loader
+                .placeholder(R.drawable.loading)
+                .centerInside()
+                .into(holder.mMovieImage)
+            holder.mMovieImage2.visibility = View.GONE
+            holder.mMovieImage.visibility = View.VISIBLE
+        }
+        else {
+            Glide.with(holder.mView)
+                .load(baseUrl + movie.movieLandscapeUrl)
+                // Uses placeholder image from https://www.svgrepo.com/svg/199954/loading-loader
+                .placeholder(R.drawable.loading)
+                .centerInside()
+                .into(holder.mMovieImage2)
+            holder.mMovieImage2.visibility = View.VISIBLE
+            holder.mMovieImage.visibility = View.GONE
+        }
 
         holder.mView.setOnClickListener {
             holder.mItem?.let { movie ->
@@ -74,12 +99,4 @@ class MoviesRecyclerViewAdapter(
         return movies.size
     }
 
-    fun screenChanged(orientation: Boolean) {
-        Log.v("orientation", "screenChanged reached")
-        if (orientation) {
-            //code
-        } else {
-            //code
-        }
-    }
 }
