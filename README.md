@@ -17,7 +17,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [X] Improve and customize the user interface through styling and coloring
-- [ ] Implement orientation responsivity
+- [X] Implement orientation responsivity
   - App should neatly arrange data in both landscape and portrait mode
 - [X] Implement Glide to display placeholder graphics during loading
   - Note: this feature is difficult to capture in a GIF without throttling internet speeds.  Instead, include an additional screencap of your Glide code implementing the feature.  (<10 lines of code)
@@ -38,6 +38,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/)
 ## Notes
 
 - Extreme latency (80000ms and up) from the required API. This was only seen through Android Studio; tests in Postman were on the order of 300ms. Other APIs (such as the NY Times book stats API) did not show this issue. I paused my recording to work around this issue but it made testing and development much slower and more frustrating. 
+- Swapping between poster and promo images on orientation changes was challenging in the fragment structure.
 
 ## License
 
