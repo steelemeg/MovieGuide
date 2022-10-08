@@ -61,7 +61,7 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener{
         // Create and set up an AsyncHTTPClient() here
         val client = AsyncHttpClient()
         val params = RequestParams()
-       // params["api_key"] = API_KEY
+        params["api_key"] = API_KEY
         Log.v("state", "branch " + models?.size.toString())
         if (models?.size == null) {
             Log.v("state", "no existing data")
@@ -69,8 +69,6 @@ class MoviesFragment : Fragment(), OnListFragmentInteractionListener{
 
             // Using the client, perform the HTTP request
             val start = System.currentTimeMillis()
-
-            // End debugging code
             client[
                     // Extremely slow response times
                     "https://api.themoviedb.org/3/movie/now_playing",
